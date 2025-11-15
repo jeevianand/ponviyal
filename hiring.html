@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponviyal | Hiring</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+        }
+
+        /* Navbar same theme */
+        nav {
+            width: 100%;
+            background: #f8f8f8;
+            padding: 12px 40px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+        }
+        nav a:hover {
+            color: #ff8c00;
+        }
+          /* Top green strip */
+.top-bar {
+  width: 100%;
+  background: #1b5e20; /* green */
+  color: #fff;
+  padding: 6px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Scrolling text */
+.top-bar p {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+  animation: scroll-left 15s linear infinite;
+  padding-left: 100%; /* start off screen */
+}
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+        /* Main container */
+        .hiring-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        /* Poster left */
+        .poster img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+           
+        }
+        .poster {
+            flex: 1;
+            
+        }
+
+        /* Right content */
+        .right-content {
+            flex: 1;
+            
+        }
+        .right-content h2 {
+            color: #ff8c00;
+            font-size: 28px;
+            margin-bottom: 5px;
+
+        }
+        .right-content p {
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* FORM AREA */
+        .form-section {
+            max-width: 300px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #fff7ec;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-section h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ff8c00;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin-top: 6px;
+        }
+        textarea {
+            resize: none;
+            height: 120px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff8c00;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #e67e00;
+        }
+
+        /* FOOTER */
+        footer {
+            width: 100%;
+            background: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Responsive */
+        @media(max-width: 768px){
+            .hiring-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top moving green bar -->
+  <div class="top-bar">
+    <p>🌿 100% Pure • Natural • Herbal • Chemical Free • Handcrafted with Care 🌿</p>
+  </div>
+
+    <!-- TOP SECTION (Poster + Content) -->
+    <div class="hiring-section">
+
+        <div class="poster">
+            <img src="distributor.jpg" alt="Hiring Distributor">
+        </div>
+
+        <div class="right-content">
+            <h2>We Are Hiring Distributors</h2>
+
+            <p>
+                <!-- Your content goes here. I will replace this once you send me your text. -->
+                Join Ponviyal and grow with a trusted brand.  
+                We are looking for distributors in Madurai & surrounding areas.  
+                Great margins, fast-moving products, and full support from our team.
+            </p>
+        </div>
+
+    </div>
+
+<!-- FORM -->
+<div class="form-section">
+    <h3>Distributor Application Form</h3>
+
+    <form action="https://api.web3forms.com/submit" method="POST" id="distForm">
+        
+        <!-- Web3Forms Access Key -->
+        <input type="hidden" name="access_key" value="56ed90fd-2306-4113-a991-ddd732ddfc2e">
+
+        <!-- Optional: Disable Captcha -->
+        <input type="hidden" name="_captcha" value="false">
+
+        <!-- Optional: Redirect to success page -->
+        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="text" name="mobile" required>
+        </div>
+
+        <div class="form-group">
+            <label>WhatsApp Number</label>
+            <input type="text" name="whatsapp">
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email">
+        </div>
+
+        <div class="form-group">
+            <label>Location / City</label>
+            <input type="text" name="location">
+        </div>
+
+        <div class="form-group">
+            <label>Business / Shop Name (if any)</label>
+            <input type="text" name="shopname">
+        </div>
+
+        <div class="form-group">
+            <label>Experience in Sales / Distribution</label>
+            <input type="text" name="experience">
+        </div>
+
+        <div class="form-group">
+            <label>Message</label>
+            <textarea name="message"></textarea>
+        </div>
+
+        <button type="submit">Submit Application</button>
+    </form>
+</div>
+    <!-- FOOTER -->
+    <footer>
+        © 2025 Ponviyal Foods. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
+
