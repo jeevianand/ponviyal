@@ -1,62 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ponviyal | Hiring</title>
 
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #ffffff;
+        /* -------------------- TOP GREEN STRIP -------------------- */
+        .top-bar {
+            width: 100%;
+            background: #1b5e20;
+            color: #fff;
+            height: 35px;
+            overflow: hidden;
         }
 
-        
-        nav {
-            width: 100%;
-            background: #f8f8f8;
-            padding: 12px 40px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        .top-bar p {
+            display: inline-block;
+            white-space: nowrap;
+            font-size: 12px;
+            font-weight: 500;
+            animation: scroll-left 15s linear infinite;
+            padding-left: 100%;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+
+        /* -------------------- HEADER -------------------- */
+        .navbar {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            padding: 20px 20px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 1000;
         }
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-        }
-        nav a:hover {
-            color: #ff8c00;
-        }
-          /* Top green strip */
-.top-bar {
-  width: 100%;
-  background: #1b5e20; /* green */
-  color: #fff;
-  padding: 6px 0;
-  overflow: hidden;
-  position: relative;
-}
 
-/* Scrolling text */
-.top-bar p {
-  display: inline-block;
-  white-space: nowrap;
-  font-size: 14px;
-  font-weight: 500;
-  animation: scroll-left 15s linear infinite;
-  padding-left: 100%; /* start off screen */
-}
-@keyframes scroll-left {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
+        .logo-area {
+            position: absolute;
+            left: 20px;
+        }
+
+        .logo-area .logo {
+            height: 85px;
+            width: auto;
+        }
+
+        .main-menu {
+            margin: 0;
+            font-family: Arial, sans-serif;
+
+            color: #333;
+        }
+
+        .main-menu {
+            display: flex;
+            gap: 40px;
+        }
+
+        .main-menu a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .main-menu a:hover,
+        .main-menu .active {
+            color: #2e7d32;
+        }
+
+        /* Mobile Navigation */
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            position: absolute;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background: white;
+            width: 100%;
+            padding: 15px 20px;
+        }
+
+        .mobile-nav a {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            text-decoration: none;
+            color: #2e7d32;
+        }
+
+        .mobile-nav.show {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            .main-menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .logo-area .logo {
+                height: 60px;
+            }
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sub-text {
+            font-size: 14px;
+            color: #777;
+            margin-top: 4px;
+        }
+
+        .mini-badge {
+            background: #e9f6ec;
+            color: #2e7d32;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 6px;
+        }
+
+
+
+
+        :root {
+            /* Brand palette */
+            --green: #2e7d32;
+            --green-soft: #e9f6ec;
+            --gold: #d4a017;
+            --gold-deep: #b8870b;
+            --ink: #1f1f1f;
+            --muted: #666;
+            --card: #ffffff;
+            --bg: #f8f5ee;
+            /* warm neutral like the sample site */
+            --ring: rgba(0, 0, 0, .06);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            scroll-behavior: smooth
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: saturate(180%) blur(8px);
+            background: rgba(255, 255, 255, .7);
+            border-bottom: 1px solid var(--ring);
+        }
+
+
+
         /* Main container */
         .hiring-section {
             max-width: 1200px;
@@ -71,25 +205,28 @@
         .poster img {
             width: 100%;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-           
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+
         }
+
         .poster {
             flex: 1;
-            
+
         }
 
         /* Right content */
         .right-content {
             flex: 1;
-            
+
         }
+
         .right-content h2 {
             color: #ff8c00;
             font-size: 28px;
             margin-bottom: 5px;
 
         }
+
         .right-content p {
             color: #444;
             line-height: 1.6;
@@ -102,7 +239,7 @@
             padding: 30px;
             background: #fff7ec;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .form-section h3 {
@@ -114,21 +251,26 @@
         .form-group {
             margin-bottom: 15px;
         }
+
         label {
             font-weight: bold;
             color: #333;
         }
-        input, textarea {
+
+        input,
+        textarea {
             width: 100%;
             padding: 10px;
             border-radius: 6px;
             border: 1px solid #ccc;
             margin-top: 6px;
         }
+
         textarea {
             resize: none;
             height: 120px;
         }
+
         button {
             width: 100%;
             padding: 12px;
@@ -140,35 +282,286 @@
             cursor: pointer;
             margin-top: 10px;
         }
+
         button:hover {
             background: #e67e00;
         }
 
-        /* FOOTER */
-        footer {
-            width: 100%;
-            background: #f1f1f1;
-            padding: 20px;
+        /* Footer */
+        .footer {
+            padding: 26px 20px;
             text-align: center;
-            margin-top: 50px;
+            color: whitesmoke;
+            border-top: 1px solid var(--ring);
+            background-color: green;
+
+
         }
 
-        /* Responsive */
-        @media(max-width: 768px){
-            .hiring-section {
-                flex-direction: column;
+        /* Floating WhatsApp Button */
+        .wa-fab {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 60;
+            text-decoration: none;
+            display: grid;
+            place-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            box-shadow: 0 12px 26px rgba(0, 0, 0, .25);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .wa-fab:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, .3)
+        }
+
+        .wa-icon {
+            width: 30px;
+            height: 30px;
+            display: block;
+        }
+
+        /* Reveal on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .6s ease, transform .6s ease
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: none
+        }
+
+        .sub-text {
+            font-size: 14px;
+            color: #777;
+            margin-top: 4px;
+        }
+
+        .mini-badge {
+            background: #e9f6ec;
+            color: #2e7d32;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 6px;
+        }
+
+        /* ---------------- FOOTER ---------------- */
+        .main-footer {
+            background: white;
+            padding: 40px 60px;
+            margin-top: 20px;
+            position: relative;
+
+
+        }
+
+        /* gold strip above footer */
+        .main-footer::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            /* height matches margin-top */
+            left: 0;
+            width: 100%;
+            height: 20px;
+            /* same as margin-top */
+            background: goldenrod;
+            /* gold color */
+        }
+
+        /* Align story text with the other column headings */
+        .footer-about p {
+            margin-top: 10px;
+            /* earlier 40px - now aligned correctly */
+            line-height: 1.4;
+        }
+
+        .footer-logo {
+            width: 200px;
+            /* adjust if needed */
+            margin-bottom: -35px;
+            /* earlier was big, now reduced */
+            margin-top: -35px;
+            /* moves logo UP */
+        }
+
+        .footer-col p {
+            margin-top: 0;
+            color: black;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: goldenrod;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .footer-col ul li a:hover {
+            color: black;
+            font-weight: 600;
+        }
+
+        .footer-help .support-title {
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .footer-icons a {
+            margin-right: 12px;
+            font-size: 22px;
+            color: #1b5e20;
+            text-decoration: none;
+        }
+
+        .footer-icons a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-icons {
+            display: flex;
+            gap: 14px;
+            margin-top: 12px;
+        }
+
+        .footer-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            transition: all 0.25s ease;
+        }
+
+        .footer-icons a:hover {
+            background: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+
+        /* Ensure all columns stay in one single row */
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: nowrap;
+            /* prevents dropping to next line */
+        }
+
+        /* Adjust widths so 4 columns fit in one line */
+        .footer-about {
+            width: 32%;
+            /* reduced from 35% */
+        }
+
+        .footer-col {
+            width: 20%;
+            /* equal width for other 3 columns */
+            min-width: 180px;
+        }
+
+        /* added this part */
+            @media (max-width: 768px) {
+            .footer-container {
+                flex-wrap: wrap !important;
+                gap: 30px;
+            }
+
+            .footer-about {
+                width: 100% !important;
+                text-align: center;
+            }
+
+            .footer-col {
+                width: 45% !important;
             }
         }
+
+        @media (max-width: 480px) {
+            .footer-col {
+                width: 100% !important;
+                text-align: center;
+            }
+        }
+        @media (max-width: 480px) {
+        
+  .footer-icons {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+
     </style>
 </head>
 
 <body>
 
     <!-- Top moving green bar -->
-  <div class="top-bar">
-    <p>🌿 100% Pure • Natural • Herbal • Chemical Free • Handcrafted with Care 🌿</p>
-  </div>
 
+    <!-- Top moving green bar -->
+    <div class="top-bar">
+        <p>🌿 100% Pure • Natural • Herbal • Chemical Free • Handcrafted with Care 🌿</p>
+    </div>
+    <header class="navbar">
+        <div class="logo-area">
+            <img src="logo.png" class="logo">
+        </div>
+
+        <nav class="main-menu">
+            <a href="index.html">Home</a>
+            <a href="index.html#products">Our Products</a>
+            <a href="about.html">About Us</a>
+            <a href="hiring.html" class="active">Hiring</a>
+            <a href="index.html#order">Order</a>
+        </nav>
+
+        <!-- MOBILE MENU BUTTON -->
+        <div class="hamburger" onclick="toggleMobileMenu()">
+            ☰
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#products">Our Products</a>
+        <a href="about.html">About Us</a>
+        <a href="hiring.html">Hiring</a>
+        <a href="index.html#order">Order</a>
+    </div>
+    </header>
     <!-- TOP SECTION (Poster + Content) -->
     <div class="hiring-section">
 
@@ -181,78 +574,176 @@
 
             <p>
                 <!-- Your content goes here. I will replace this once you send me your text. -->
-                Join Ponviyal and grow with a trusted brand.  
-                We are looking for distributors in Madurai & surrounding areas.  
+                Join Ponviyal and grow with a trusted brand.
+                We are looking for distributors in Madurai & surrounding areas.
                 Great margins, fast-moving products, and full support from our team.
             </p>
         </div>
 
     </div>
 
-<!-- FORM -->
-<div class="form-section">
-    <h3>Distributor Application Form</h3>
+    <!-- FORM -->
+    <div class="form-section">
+        <h3>Distributor Application Form</h3>
 
-    <form action="https://api.web3forms.com/submit" method="POST" id="distForm">
-        
-        <!-- Web3Forms Access Key -->
-        <input type="hidden" name="access_key" value="56ed90fd-2306-4113-a991-ddd732ddfc2e">
+        <form action="https://api.web3forms.com/submit" method="POST" id="distForm">
 
-        <!-- Optional: Disable Captcha -->
-        <input type="hidden" name="_captcha" value="false">
+            <!-- Web3Forms Access Key -->
+            <input type="hidden" name="access_key" value="56ed90fd-2306-4113-a991-ddd732ddfc2e">
 
-        <!-- Optional: Redirect to success page -->
-        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+            <!-- Optional: Disable Captcha -->
+            <input type="hidden" name="_captcha" value="false">
 
-        <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" name="name" required>
-        </div>
+            <!-- Optional: Redirect to success page -->
+            <input type="hidden" name="redirect" value="https://web3forms.com/success">
 
-        <div class="form-group">
-            <label>Mobile Number</label>
-            <input type="text" name="mobile" required>
-        </div>
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="name" required>
+            </div>
 
-        <div class="form-group">
-            <label>WhatsApp Number</label>
-            <input type="text" name="whatsapp">
-        </div>
+            <div class="form-group">
+                <label>Mobile Number</label>
+                <input type="text" name="mobile" required>
+            </div>
 
-        <div class="form-group">
-            <label>Email</label>
-            <input type="email" name="email">
-        </div>
+            <div class="form-group">
+                <label>WhatsApp Number</label>
+                <input type="text" name="whatsapp">
+            </div>
 
-        <div class="form-group">
-            <label>Location / City</label>
-            <input type="text" name="location">
-        </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email">
+            </div>
 
-        <div class="form-group">
-            <label>Business / Shop Name (if any)</label>
-            <input type="text" name="shopname">
-        </div>
+            <div class="form-group">
+                <label>Location / City</label>
+                <input type="text" name="location">
+            </div>
 
-        <div class="form-group">
-            <label>Experience in Sales / Distribution</label>
-            <input type="text" name="experience">
-        </div>
+            <div class="form-group">
+                <label>Business / Shop Name (if any)</label>
+                <input type="text" name="shopname">
+            </div>
 
-        <div class="form-group">
-            <label>Message</label>
-            <textarea name="message"></textarea>
-        </div>
+            <div class="form-group">
+                <label>Experience in Sales / Distribution</label>
+                <input type="text" name="experience">
+            </div>
 
-        <button type="submit">Submit Application</button>
-    </form>
-</div>
-    <!-- FOOTER -->
-    <footer>
-        © 2025 Ponviyal Foods. All Rights Reserved.
+            <div class="form-group">
+                <label>Message</label>
+                <textarea name="message"></textarea>
+            </div>
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+
+    <!-- added this part -->
+    <!-- added this part -->
+    <footer class="main-footer">
+        <div class="footer-container">
+
+            <!-- Column 1: Logo + Story -->
+            <div class="footer-col footer-about">
+                <img src="logo.png" alt="Ponviyal Logo" class="footer-logo">
+                <p>
+                    At Ponviyal, we believe that true beauty begins with nature’s purity.
+                    Born from the vision of SJM Herbal Products, our purpose is to bring back
+                    the trusted Indian herbal traditions that have cared for skin for generations.
+                    We combine these age-old practices with clean and modern formulations made
+                    for today’s lifestyle. Our Ponmanjal collection features authentic Kasturi Manjal,
+                    known for its natural glow-enhancing benefits. Every ingredient is selected with
+                    care, ensuring purity, safety, and timeless wellness. With every product, we honor
+                    our roots and help you glow confidently and naturally.
+                </p>
+            </div>
+
+            <!-- Column 2: Quick Links (Products) -->
+            <div class="footer-col">
+                <h4>Our Products</h4>
+                <ul>
+                    <li><a href="bathpowder.html">Bath Powder</a></li>
+                    <li><a href="turmeric.html">Turmeric</a></li>
+                    <li><a href="Kasturi.html">Kasturi Turmeric</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Important Info -->
+            <div class="footer-col">
+                <h4>Important Info</h4>
+                <ul>
+                    <li><a href="#about us">About Us</a></li>
+                    <li><a href="return.html">Return Policy</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Need Help -->
+            <div class="footer-col footer-help">
+                <h4>Need Help?</h4>
+                <p>Need help with your order?</p>
+                <p class="help-link"><a href="contact.html">Contact Us</a></p>
+
+                <p class="support-title">Customer Support :</p>
+                <p>(Mon - Sat : 9:00 AM to 7:00 PM)</p>
+
+                <div class="footer-icons">
+                    <a href="https://www.instagram.com/ponviyal/" target="_blank">
+                        <img src="insta.png" class="social-icon">
+                    </a>
+
+                    <a href="https://www.facebook.com/profile.php?id=61583623478814" target="_blank">
+                        <img src="fb.png" class="social-icon">
+                    </a>
+
+                    <a href="mailto:info@ponviyal.com@gmail.com">
+                        <img src="mail.png" class="social-icon">
+                    </a>
+                </div>
+
+
+            </div>
+    </footer>
+    <!-- added this part -->
+
+
+
+    <!-- Your existing footer stays exactly same -->
+    <footer class="footer">
+        © 2025 Ponviyal Herbal • All rights reserved
+        <p>Designed by <a href="https://www.instagram.com/digi_trix_/" target="_blank"
+                style="color:black; text-decoration: none; font-weight: 600;">DigiTrix</a></p>
     </footer>
 
+
+
+    <!-- Floating WhatsApp FAB -->
+    <a class="wa-fab" target="_blank"
+        href="https://wa.me/919698675335?text=Hello%2C%20I%20want%20to%20order%20the%20Herbal%20Bath%20Powder%20from%20Ponviyal%20Herbal.">
+
+        <!-- Inline WhatsApp SVG icon (official-style) -->
+        <svg class="wa-icon" viewBox="0 0 32 32" aria-hidden="true">
+            <path fill="#fff"
+                d="M19.11 17.38c-.27-.13-1.6-.79-1.85-.88-.25-.09-.43-.13-.62.13s-.71.88-.86 1.06c-.16.18-.32.2-.59.07-.27-.13-1.12-.41-2.14-1.31-.79-.7-1.32-1.56-1.48-1.82-.16-.27-.02-.42.12-.55.13-.12.27-.32.4-.48.13-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.13-.62-1.49-.85-2.04-.22-.53-.45-.46-.62-.47-.16-.01-.34-.01-.52-.01s-.48.07-.73.34c-.25.27-.96.94-.96 2.3 0 1.36.99 2.68 1.13 2.86.13.18 1.94 2.97 4.71 4.18.66.29 1.18.46 1.58.59.66.21 1.26.18 1.73.11.53-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.29-.07-.12-.25-.18-.52-.31z" />
+            <path fill="#fff"
+                d="M16 3C9.383 3 4 8.383 4 15c0 2.117.555 4.102 1.529 5.82L4 29l8.35-1.508C14.01 28.47 14.983 28.6 16 28.6c6.617 0 12-5.383 12-12S22.617 3 16 3zm0 22.8c-.91 0-1.79-.15-2.61-.43l-.19-.07-4.88.88.9-4.76-.09-.2A9.79 9.79 0 0 1 6.2 15c0-5.41 4.39-9.8 9.8-9.8s9.8 4.39 9.8 9.8-4.39 9.8-9.8 9.8z" />
+        </svg>
+    </a>
+
+
+    <script>
+  function toggleMobileMenu() {
+    document.getElementById("mobileNav").classList.toggle("show");
+  }
+
+  function toggleDropdown() {
+    let box = document.getElementById("descBox");
+    box.style.display = box.style.display === "block" ? "none" : "block";
+  }
+</script>
 </body>
+
 </html>
-
-
