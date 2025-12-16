@@ -1,759 +1,1082 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ponviyal</title>
-<meta name="description" content="Ponviyal Herbal – Natural Bath Powder and Turmeric Powder" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ponviyal Herbal – Bath Powder & Turmeric Powder</title>
+  <meta name="description" content="Ponviyal Herbal – Natural Bath Powder and Turmeric Powder" />
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-       #splash {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #f9f7f3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-/* Logo */
-#splash .logo {
-  width: 150px;
-  height: 200px;
-  margin-bottom: 20px;
-  animation: fadeIn 2s ease-in-out;
-}
-
-/* Loading text */
-#splash .loading-text {
-  font-size: 22px;
-  font-weight: bold;
-  font-family:poppins ;
-  color: #2e7d32;
-  animation: pulse 1.5s infinite;
-  text-align: center;
-}
-  
-#loader {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 9999;
-      transition: opacity 1s ease; /* Smooth fade out */
-    }
-nav {
-  position: relative;
-  display: flex;
-  justify-content: center;  /* keeps links centered */
-  align-items: center;
-  background: white;
-  height: 60px;  /* fixed navbar height */
-  padding: 0 20px;
-}
-
-nav img.logo {
-  position: absolute;
-  left: 20px;     /* keeps logo on left */
-  height: 60px;   /* make logo larger */
-  width: auto;
-  top: 50%;
-  transform: translateY(-50%); /* keeps it vertically centered */
-}
-
-nav a {
-  margin: 0 15px;
-  text-decoration: none;
-  color: #333;
-  font-weight: 600;
-}
-
-    /* Spinner */
-    .spinner {
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid black;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
+  <style>
+    /* -------------------- TOP GREEN STRIP -------------------- */
+    .top-bar {
+        width: 100%;
+        background: #1b5e20;
+        color: #fff;
+        height: 35px;
+        overflow: hidden;
     }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .top-bar p {
+        display: inline-block;
+        white-space: nowrap;
+        font-size: 12px;
+        font-weight: 500;
+        animation: scroll-left 15s linear infinite;
+        padding-left: 100%;
     }
 
-    /* Hide content until loader is gone */
-    #content {
-      display: none;
-      animation: fadeIn 1s ease forwards;
+    @keyframes scroll-left {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+
+    /* -------------------- HEADER -------------------- */
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 20px;
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
     }
 
-  /* Top green strip */
-.top-bar {
-  width: 100%;
-  background: #1b5e20; /* green */
-  color: #fff;
-  padding: 6px 0;
-  overflow: hidden;
-  position: relative;
-}
+    .logo-area {
+        position: absolute;
+        left: 20px;
+    }
 
-/* Scrolling text */
-.top-bar p {
-  display: inline-block;
-  white-space: nowrap;
-  font-size: 14px;
-  font-weight: 500;
-  animation: scroll-left 15s linear infinite;
-  padding-left: 100%; /* start off screen */
-}
+    .logo-area .logo {
+        height: 85px;
+        width: auto;
+    }
 
-@keyframes scroll-left {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  background: #fff;
-  position: relative;
-  z-index: 1000;
-}
+    .main-menu {
+        margin: 0;
+        font-family: Arial, sans-serif;
 
-.logo-area {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+        color: #333;
+    }
 
-.logo {
-  height: 40px;
-}
+    .main-menu {
+        display: flex;
+        gap: 40px;
+    }
 
-.brand-name {
-  font-weight: 700;
-  font-size: 20px;
-  color: #2c3e50;
-}
+    .main-menu a {
+        text-decoration: none;
+        font-weight: 600;
+        color: #333;
+        font-size: 16px;
+    }
 
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
+    .main-menu a:hover,
+    .main-menu .active {
+        color: #2e7d32;
+    }
 
-
-    /* Hamburger Button */
+    /* Mobile Navigation */
     .hamburger {
-      position: fixed;
-      top: 75px;
-      right: 20px;
-      font-size: 28px;
-      cursor: pointer;
-      z-index: 1100; /* stays above menu */
-    }
-    /* Side Menu */
-    .side-menu {
-      height: calc(100% - 70px); /* leave space for order button row */
-      width: 0;
-      position: fixed;
-      top: 70px; /* start below the button */
-      right: 0;
-      background: linear-gradient(to bottom, #ded9bd, white);
-      overflow-x: hidden;
-      transition: 0.4s;
-      padding-top: 20px;
-      box-shadow: -5px 0 15px rgba(0,0,0,0.2);
-      z-index: 1000;
+        display: none;
+        font-size: 30px;
+        position: absolute;
+        right: 20px;
+        cursor: pointer;
     }
 
-    .side-menu a {
-      padding: 12px 24px;
-      text-decoration: none;
-      font-size: 20px;
-      color: #000;
-      display: block;
-      transition: 0.3s;
+    .mobile-nav {
+        display: none;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        padding: 15px 20px;
     }
 
-    .side-menu a:hover {
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 6px;
+    .mobile-nav a {
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+        text-decoration: none;
+        color: #2e7d32;
     }
 
-    /* Close Button */
-    .close-btn {
-      position: absolute;
-      top: 28px;
-      right: 25px;
-      font-size: 30px;
-      cursor: pointer;
+    .mobile-nav.show {
+        display: flex;
+    }
+
+    @media (max-width: 768px) {
+        .main-menu {
+            display: none;
+        }
+
+        .hamburger {
+            display: block;
+        }
+
+        .logo-area .logo {
+            height: 60px;
+        }
+    }
+
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .sub-text {
+        font-size: 14px;
+        color: #777;
+        margin-top: 4px;
+    }
+
+    .mini-badge {
+        background: #e9f6ec;
+        color: #2e7d32;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        display: inline-block;
+        margin-top: 6px;
     }
 
 
-/* Dropdown menu */
-.mobile-menu {
-  display: none;  /* hidden by default */
-  flex-direction: column;
-  position: absolute;
-  top: 70px;  /* sits just below navbar */
-  right: 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  padding: 10px 0;
-  width: 180px;
+
+
+    :root {
+        /* Brand palette */
+        --green: #2e7d32;
+        --green-soft: #e9f6ec;
+        --gold: #d4a017;
+        --gold-deep: #b8870b;
+        --ink: #1f1f1f;
+        --muted: #666;
+        --card: #ffffff;
+        --bg: #f8f5ee;
+        /* warm neutral like the sample site */
+        --ring: rgba(0, 0, 0, .06);
+    }
+
+    * {
+        box-sizing: border-box
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        scroll-behavior: smooth
+    }
+
+    /* Header */
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: saturate(180%) blur(8px);
+        background: rgba(255, 255, 255, .7);
+        border-bottom: 1px solid var(--ring);
+    }
+
+
+
+
+
+    /* Hero */
+    .hero {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 110px 20px 90px;
+        background: linear-gradient(140deg, #fff, #fff2 25%, var(--green-soft) 55%, #fff 90%);
+
+    }
+
+    .hero h1 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.1;
+        margin: 0 0 14px;
+        letter-spacing: .2px;
+    }
+
+    .hero p {
+        color: var(--muted);
+        max-width: 750px;
+        margin: 0 auto 24px
+    }
+
+    .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 22px;
+        border-radius: 40px;
+        background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        box-shadow: 0 8px 20px rgba(212, 160, 23, .35);
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 26px rgba(212, 160, 23, .45)
+    }
+
+    /* Section */
+    section {
+        padding: 72px 20px
+    }
+
+    .section-title {
+        text-align: center;
+        margin: 0 0 14px;
+        font-size: clamp(1.6rem, 2.6vw, 2.2rem)
+    }
+
+    .section-sub {
+        color: var(--muted);
+        text-align: center;
+        margin: 0 auto 36px;
+        max-width: 760px
+    }
+
+
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border-radius: 12px;
+        border: 1px solid var(--ring);
+        text-decoration: none;
+        font-weight: 700;
+        color: var(--ink);
+        transition: background .2s ease, transform .2s ease;
+    }
+
+    .btn:hover {
+        background: #f9f9f9;
+        transform: translateY(-1px)
+    }
+
+    .btn.primary {
+        border: none;
+        background: var(--green);
+        color: #fff;
+        box-shadow: 0 8px 18px rgba(46, 125, 50, .25)
+    }
+
+    .btn.primary:hover {
+        background: #256b29
+    }
+
+    .product-slider-container {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .product-slider {
+        display: flex;
+        flex-wrap: nowrap;
+        /* FIXED: prevent stacking */
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .product-slide {
+        flex: 0 0 100%;
+        /* FIXED: each slide takes full width */
+        display: flex;
+        justify-content: center;
+    }
+
+    .slide-image {
+        width: 100%;
+        height: 350px;
+        /* desktop height */
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .slide-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    /* Shop Now Button */
+    .shop-btn {
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #b8870b;
+        padding: 10px 22px;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 15px;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Dots */
+    .slider-dots {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .slider-dots .dot {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        background: #b5e0b8;
+        border-radius: 50%;
+        margin: 0 4px;
+        transition: 0.3s;
+    }
+
+    .slider-dots .dot.active {
+        background: #2e7d32;
+        transform: scale(1.2);
+    }
+
+    /* MOBILE RESPONSIVE FIX */
+    @media (max-width: 768px) {
+
+        .product-slider-container {
+            max-width: 95%;
+        }
+
+        .slide-image {
+            height: 240px;
+            /* smaller height */
+        }
+
+        .slide-image img {
+            height: 240px;
+        }
+
+        .shop-btn {
+            padding: 7px 16px;
+            font-size: 13px;
+            bottom: 15px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .slide-image {
+            height: 200px;
+        }
+
+        .slide-image img {
+            height: 200px;
+        }
+    }
+
+    .slide-image {
+        position: relative;
+        pointer-events: none;
+        /* allow button to receive clicks */
+    }
+
+    .shop-btn {
+        pointer-events: auto;
+        /* button clickable again */
+    }
+
+    /* NAVBAR BASE */
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 20px;
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    /* LOGO LEFT */
+    .logo-area {
+        position: absolute;
+        left: 20px;
+    }
+
+    /* Contact / Order */
+    .contact {
+        background: linear-gradient(160deg, #ffffff 0%, var(--green-soft) 100%);
+        border-top: 1px solid var(--ring);
+    }
+
+    .contact-card {
+        max-width: 920px;
+        margin: 0 auto;
+        background: #fff;
+        border: 1px solid var(--ring);
+        border-radius: 18px;
+        padding: 22px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+    }
+
+    .contact-card .text {
+        flex: 1 1 420px
+    }
+
+    .contact-card .cta-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap
+    }
+
+    .btn-details {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 25px;
+        padding: 6px 14px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn-details:hover {
+        background: #f3f3f3;
+    }
+
+    .buy-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        /* prevents overlap on small screens */
+    }
+
+    .btn-details {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 999px;
+        /* makes it pill-shaped */
+        padding: 10px 16px;
+        /* same padding as .btn */
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn-details:hover {
+        background: #f3f3f3;
+    }
+
+    .why-choose-us {
+        text-align: center;
+        padding: 40px 20px;
+        background: #f9f9f9;
+        border-radius: 15px;
+        margin: 40px auto;
+        max-width: 800px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .why-choose-us h2 {
+        font-size: 24px;
+        color: #2e7d32;
+        margin-bottom: 20px;
+    }
+
+    .why-choose-us ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .why-choose-us li {
+        font-size: 18px;
+        margin: 10px 0;
+        color: #444;
+    }
+
+
+
+    /* Reveal on scroll */
+    .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity .6s ease, transform .6s ease
+    }
+
+    .reveal.is-visible {
+        opacity: 1;
+        transform: none
+    }
+
+    .sub-text {
+        font-size: 14px;
+        color: #777;
+        margin-top: 4px;
+    }
+
+    .mini-badge {
+        background: #e9f6ec;
+        color: #2e7d32;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        display: inline-block;
+        margin-top: 6px;
+    }
+
+
+        /* Footer */
+        .footer {
+            padding: 26px 20px;
+            text-align: center;
+            color: whitesmoke;
+            border-top: 1px solid var(--ring);
+            background-color: green;
+ 
+
+        }
+
+        /* Floating WhatsApp Button */
+        .wa-fab {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 60;
+            text-decoration: none;
+            display: grid;
+            place-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            box-shadow: 0 12px 26px rgba(0, 0, 0, .25);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .wa-fab:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, .3)
+        }
+
+        .wa-icon {
+            width: 30px;
+            height: 30px;
+            display: block;
+        }
+
+        /* Reveal on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .6s ease, transform .6s ease
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: none
+        }
+
+        .sub-text {
+            font-size: 14px;
+            color: #777;
+            margin-top: 4px;
+        }
+
+        .mini-badge {
+            background: #e9f6ec;
+            color: #2e7d32;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 6px;
+        }
+
+        /* ---------------- FOOTER ---------------- */
+        .main-footer {
+            background:white;
+            padding: 40px 60px;
+            margin-top: 20px;
+            position: relative;
+
+
+        }
+
+        /* gold strip above footer */
+        .main-footer::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            /* height matches margin-top */
+            left: 0;
+            width: 100%;
+            height: 20px;
+            /* same as margin-top */
+            background: goldenrod;
+            /* gold color */
+        }
+
+        /* Align story text with the other column headings */
+        .footer-about p {
+            margin-top: 10px;
+            /* earlier 40px - now aligned correctly */
+            line-height: 1.4;
+        }
+
+        .footer-logo {
+            width: 200px;
+            /* adjust if needed */
+            margin-bottom: -35px;
+            /* earlier was big, now reduced */
+            margin-top: -35px;
+            /* moves logo UP */
+        }
+
+        .footer-col p {
+            margin-top: 0;
+            color: black;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: goldenrod;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .footer-col ul li a:hover {
+            color: black;
+            font-weight: 600;
+        }
+
+        .footer-help .support-title {
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .footer-icons a {
+            margin-right: 12px;
+            font-size: 22px;
+            color: #1b5e20;
+            text-decoration: none;
+        }
+
+        .footer-icons a:hover {
+            opacity: 0.7;
+        }
+        .footer-icons {
+    display: flex;
+    gap: 14px;
+    margin-top: 12px;
 }
 
-.mobile-menu a {
-  padding: 12px 20px;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  display: block;
+.footer-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    transition: all 0.25s ease;
 }
 
-.mobile-menu a:hover {
-  background: #f1f1f1;
+.footer-icons a:hover {
+    background: #ffffff;
+    transform: translateY(-3px);
 }
 
-
-/* Menu links as pills */
-.navbar nav {
-  display: flex;
-  gap: 30px;
-}
-
-.navbar nav a {
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 20px;
-  font-family: Poppins, sans-serif;
-  color: #2e7d32;
-
-  background: white;
-  padding: 8px 18px;
-  border-radius: 25px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.navbar nav a:hover {
-  background: #2e7d32;
-  color: white;
+.social-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }
 
 
+        /* Ensure all columns stay in one single row */
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: nowrap;
+            /* prevents dropping to next line */
+        }
 
-  :root{
-    /* Brand palette */
-    --green:#2e7d32;
-    --green-soft:#e9f6ec;
-    --gold:#d4a017;
-    --gold-deep:#b8870b;
-    --ink:#1f1f1f;
-    --muted:#666;
-    --card:#ffffff;
-    --bg: #f8f5ee;        /* warm neutral like the sample site */
-    --ring: rgba(0,0,0,.06);
-  }
+        /* Adjust widths so 4 columns fit in one line */
+        .footer-about {
+            width: 32%;
+            /* reduced from 35% */
+        }
 
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0;font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;color:var(--ink);background:var(--bg);scroll-behavior:smooth}
+        .footer-col {
+            width: 20%;
+            /* equal width for other 3 columns */
+            min-width: 180px;
+        }
 
-  /* Header */
-  .header{
-    position:sticky; top:0; z-index:50;
-    backdrop-filter: saturate(180%) blur(8px);
-    background:rgba(255,255,255,.7);
-    border-bottom:1px solid var(--ring);
-  }
-  .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-  .nav{
-    display:flex; align-items:center; justify-content:space-between;
-    height:70px;
-  }
-  .brand{
-    display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.3px;
-  }
-  .brand .logo{
-    width:50px; height:40px; border-radius:50%; display:grid; place-items:center;
-    background: radial-gradient(circle at 30% 30%, var(--gold), var(--gold-deep));
-    color:#fff; font-weight:800;
-    box-shadow: 0 4px 10px rgba(212,160,23,.35);
-  }
-  .nav a{
-    color:var(--ink); text-decoration:none; font-weight:600; margin-left:24px; position:relative;
-  }
-  .nav a::after{
-    content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--green);
-    transition:width .25s ease;
-  }
-  .nav a:hover::after{width:100%}
+        /* added this part */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-wrap: wrap !important;
+                gap: 30px;
+            }
 
-  /* Hero */
-  .hero{
-    position:relative; overflow:hidden;
-    display:grid; place-items:center; text-align:center;
-    padding:110px 20px 90px;
-    background: linear-gradient(140deg,#fff, #fff2 25%, var(--green-soft) 55%, #fff 90%);
-  }
-  .hero h1{
-    font-size:clamp(2rem, 4vw, 3.2rem); line-height:1.1; margin:0 0 14px;
-    letter-spacing:.2px;
-  }
-  .hero p{color:var(--muted); max-width:750px; margin:0 auto 24px}
-  .cta{
-    display:inline-flex; align-items:center; gap:10px; padding:14px 22px; border-radius:40px;
-    background:linear-gradient(135deg,var(--gold), var(--gold-deep));
-    color:#fff; text-decoration:none; font-weight:700; box-shadow:0 8px 20px rgba(212,160,23,.35);
-    transition: transform .2s ease, box-shadow .2s ease;
-  }
-  .cta:hover{transform:translateY(-2px); box-shadow:0 12px 26px rgba(212,160,23,.45)}
+            .footer-about {
+                width: 100% !important;
+                text-align: center;
+            }
 
-  /* Section */
-  section{padding:72px 20px}
-  .section-title{
-    text-align:center; margin:0 0 14px; font-size:clamp(1.6rem, 2.6vw, 2.2rem)
-  }
-  .section-sub{color:var(--muted); text-align:center; margin:0 auto 36px; max-width:760px}
+            .footer-col {
+                width: 45% !important;
+            }
+        }
 
-  /* Products */
-  .grid{
-    max-width:1200px; margin:0 auto; display:grid; gap:26px;
-    grid-template-columns: repeat(2, minmax(0,1fr));
+        @media (max-width: 480px) {
+            .footer-col {
+                width: 100% !important;
+                text-align: center;
+            }
+        }
+        @media (max-width: 480px) {
+        
+  .footer-icons {
+    justify-content: center;
+    width: 100%;
   }
-  @media (max-width:820px){ .grid{grid-template-columns: 1fr} }
-
-  .card{
-    background:var(--card);
-    border-radius:18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.06);
-    overflow:hidden;
-    transform: translateY(0) scale(1);
-    transition: transform .28s ease, box-shadow .28s ease;
-    opacity:0; transform-origin: center 80%;
-  }
-  .card.revealed{opacity:1; transform: none}
-  .card:hover{ transform: translateY(-8px) scale(1.02); box-shadow:0 16px 40px rgba(0,0,0,.10) }
-
-  .card-media{
-    position:relative; aspect-ratio: 16/10; overflow:hidden;
-    background: #f1efe7;
-  }
-  .card-media img{
-    width:100%; height:100%; object-fit:cover; display:block;
-    transition: transform .4s ease;
-  }
-  .card:hover .card-media img{ transform: scale(1.06) }
-
-  .badge{
-    position:absolute; top:14px; left:14px;
-    background:#ffffffd9; color:var(--green); border:1px solid var(--ring);
-    font-size:.85rem; font-weight:700; padding:6px 10px; border-radius:999px;
-    backdrop-filter: blur(4px);
-  }
-  .card-body{padding:8px 8px 8px}
-  .card-title{margin:4px 0 6px; font-size:1.25rem}
-  .card-text{margin:0 0 14px; color:var(--muted)}
-  .price{font-weight:800; color:var(--green); letter-spacing:.3px}
-  .buy-row{display:flex; align-items:center; gap:12px; margin-top:16px}
-  .btn{
-    display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:12px;
-    border:1px solid var(--ring); text-decoration:none; font-weight:700; color:var(--ink);
-    transition: background .2s ease, transform .2s ease;
-  }
-  .btn:hover{ background:#f9f9f9; transform: translateY(-1px) }
-  .btn.primary{
-    border:none; background:var(--green); color:#fff; box-shadow:0 8px 18px rgba(46,125,50,.25)
-  }
-  .btn.primary:hover{ background:#256b29 }
-
-  /* Benefits / About */
-  .pill-row{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:18px}
-  .pill{
-    padding:10px 14px; border-radius:999px; background:rgb(77, 129, 9); border:1px solid var(--ring);
-    color:white; font-weight:600;
-  }
-
-  /* Contact / Order */
-  .contact{
-    background: linear-gradient(160deg, #ffffff 0%, var(--green-soft) 100%);
-    border-top:1px solid var(--ring);
-  }
-  .contact-card{
-    max-width:920px; margin:0 auto; background:#fff; border:1px solid var(--ring);
-    border-radius:18px; padding:22px; display:flex; align-items:center; gap:18px; flex-wrap:wrap;
-    box-shadow: 0 10px 30px rgba(0,0,0,.06);
-  }
-  .contact-card .text{flex:1 1 420px}
-  .contact-card .cta-row{display:flex; gap:12px; flex-wrap:wrap}
-
-  .btn-details {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 25px;
-  padding: 6px 14px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.3s;
 }
 
-.btn-details:hover {
-  background: #f3f3f3;
-}
-.buy-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap; /* prevents overlap on small screens */
-}
+    html,
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-.btn-details {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 999px; /* makes it pill-shaped */
-  padding: 10px 16px;   /* same padding as .btn */
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn-details:hover {
-  background: #f3f3f3;
-}
-.why-choose-us {
-  text-align: center;
-  padding: 40px 20px;
-  background: #f9f9f9;
-  border-radius: 15px;
-  margin: 40px auto;
-  max-width: 800px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.05);
-}
-
-.why-choose-us h2 {
-  font-size: 24px;
-  color: #2e7d32;
-  margin-bottom: 20px;
-}
-
-.why-choose-us ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.why-choose-us li {
-  font-size: 18px;
-  margin: 10px 0;
-  color: #444;
-}
-
-
-  /* Footer */
-  .footer{padding:26px 20px; text-align:center; color:#777; border-top:1px solid var(--ring)}
-
-  /* Floating WhatsApp Button */
-  .wa-fab{
-    position:fixed; right:18px; bottom:18px; z-index:60; text-decoration:none;
-    display:grid; place-items:center; width:60px; height:60px; border-radius:50%;
-    background:#25D366; box-shadow:0 12px 26px rgba(0,0,0,.25);
-    transition: transform .2s ease, box-shadow .2s ease;
-  }
-  .wa-fab:hover{ transform: translateY(-2px) scale(1.03); box-shadow:0 16px 32px rgba(0,0,0,.3)}
-  .wa-icon{ width:30px; height:30px; display:block; }
-
-  /* Reveal on scroll */
-  .reveal{opacity:0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease}
-  .reveal.is-visible{opacity:1; transform:none}
-</style>
+    </style>  
 </head>
+
 <body>
-   <!-- Splash Screen -->
-  <div id="splash">
-    <img src="logo.png" alt="Ponviyal Logo" class="logo">
-    <div class="spinner"></div> <!-- 🔥 Added loader spinner -->
-    <div class="loading-text">Loading Ponviyal...</div>
-  </div>
 
-  <!-- Main Website Content -->
-  <div id="main-content" style="display:none;"> <!-- 🔥 Wrapped your site inside -->
-    
-  <!-- Top moving green bar -->
-  <div class="top-bar">
-    <p>🌿 100% Pure • Natural • Herbal • Chemical Free • Handcrafted with Care 🌿</p>
-  </div>
 
+    <!-- Top moving green bar -->
+    <div class="top-bar">
+      <p>🌿 100% Pure • Natural • Herbal • Chemical Free • Handcrafted with Care 🌿</p>
+    </div>
 <header class="navbar">
-  <!-- Left side: Logo + Name -->
   <div class="logo-area">
-    <img src="logo.png" alt="Logo" class="logo">
-    <span class="brand-name">Ponviyal</span>
+    <img src="logo.png" class="logo">
   </div>
 
-
-  <!-- Hamburger Button -->
-  <span class="hamburger" onclick="openMenu()">☰</span>
-
-  <!-- Side Menu -->
-  <div id="menu" class="side-menu">
-    <span class="cse-btn" onclick="closeMenu()">×</span>
-    <a href="#home">Home</a>
+  <nav class="main-menu">
+    <a href="#home" class="active">Home</a>
     <a href="#products">Our Products</a>
-    <a href="#about us">About Us</a>
-        <a href="/hiring">Hiring</a>
-
-
+    <a href="about.html">About Us</a>
+    <a href="hiring.html">Hiring</a>
     <a href="#order">Order</a>
+  </nav>
+
+  <!-- MOBILE MENU BUTTON -->
+  <div class="hamburger" onclick="toggleMobileMenu()">
+    ☰
   </div>
+</header>
 
-  </header>
-
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="wrap">
-      <h1>Welcome to Ponviyal & Ponmanjal </h1>
-      <h2>Embrace Nature’s Glow</h2>
-      <p>Ponviyal is dedicated to delivering India’s traditional herbal wisdom through innovative herbal powders and skincare essentials. Discover the power of time-tested ingredients like Kasturi Manjal (turmeric), Multani Mitti, and herbal blends—carefully crafted for purity, safety, and results you can trust.</p>
-      <a href="#products" class="cta">Shop Now</a>
-      <h2>Shop now and experience the natural difference for yourself.</h2>
-    </div>
-  </section>
-
-  <!-- Products -->
-  <section id="products">
-    <h2 class="section-title">Our Products</h2>
-    <p class="section-sub">Carefully curated, time-tested formulations for everyday wellness.</p>
-
-    <div class="grid reveal">
-
-      <!-- Bath Powder -->
-      <article class="card revealed">
-        <div class="card-media">
-          <!-- Replace with your image -->
-          <img src="bath.jpg" alt="Herbal Bath Powder">
-          <span class="badge">100%Pure</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Herbal Bath Powder</h3>
-          <p class="card-text">A traditional blend for a refreshing and natural body care experience.</p>
-          <div class="buy-row">
-            <span class="price">100g, 200g</span>
-            <button class="btn-details" onclick="toggleDetails('herbal-details')">Details</button>
- <!-- Hidden Details (Bath Powder) -->
-<div class="product-details" id="herbal-details" style="display:none; margin-top:10px;">
-  <p><b>Packaging:</b> Modern, hygienic, and eco-friendly designs</p>
-  <p><b>Key Benefits:</b></p>
-  <ul style="margin-left:18px; list-style: disc;">
-    <li>Professional labeling for retail and corporate supply</li>
-    <li>Custom packaging available for spas and salons</li>
-    <li>Bulk and private label options upon request</li>
-  </ul>
+<!-- MOBILE MENU -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home">Home</a>
+  <a href="#products">Our Products</a>
+  <a href="about.html">About Us</a>
+  <a href="hiring.html">Hiring</a>
+  <a href="#order">Order</a>
 </div>
-            <a class="btn primary" target="_blank"
-               href="https://wa.me/919698675335?text=Hello%2C%20I%20want%20to%20order%20the%20Herbal%20Bath%20Powder%20from%20Ponviyal%20Herbal.">
-              Order on WhatsApp
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Turmeric Powder -->
-      <article class="card revealed">
-        <div class="card-media">
-          <!-- Replace with your image -->
-          <img src="logo4.jpg" alt="Turmeric Powder">
-          <span class="badge">100% Pure</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Ponviyal Skin Glow Turmeric Powder</h3>
-          <p class="card-text">Reveal your natural radiance with our signature blend of turmeric and select herbs. Perfect for daily skincare routines.</p>
-          <div class="buy-row">
-            <span class="price">30g, 100g, 250g
-</span>
-<button class="btn-details" onclick="toggleDetails('turmeric-details')">Details</button>
-
- <!-- Hidden Details (Turmeric Powder) -->
-<div class="product-details" id="turmeric-details" style="display:none; margin-top:10px;">
-  <p><b>Packaging:</b> Resealable stand-up pouch, jar, or canister</p>
-  <p><b>Key Benefits:</b></p>
-  <ul style="margin-left:18px; list-style: disc;">
-    <li>Brightens and rejuvenates skin</li>
-    <li>Soothes irritation and blemishes</li>
-    <li>100% natural, no parabens, no sulphates</li>
-  </ul>
-</div>
+    </header>
 
 
-            <a class="btn primary" target="_blank"
-               href="https://wa.me/919698675335?text=Hello%2C%20I%20want%20to%20order%20the%20Herbal%20Turmeric%20Powder%20from%20Ponviyal%20Herbal.">
-              Order on WhatsApp
-            </a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-
-  <!-- About / Benefits -->
-  <section id="about us">
-    <h2 class="section-title">Our Story</h2>
-    <p class="section-sub">At Ponviyal, we believe true beauty is rooted in nature. Founded by SJM Herbal Products, our mission is to revive age-old Indian herbal traditions in a modern, convenient form. Our Ponmanjal range celebrates the richness of Kasturi Manjal (wild turmeric), offering radiance and wellness in every jar.</p>
-    <br>
-    <h3 style="text-align:center; margin-top:20px">What makes us unique?</h3>
-<div class="pill-row reveal">
-  <div class="pill">Sourcing only the finest ingredients from trusted local farmers</div>
-  <div class="pill">Chemical-free, cruelty-free formulations</div>
-  <div class="pill">Stringent quality controls and hygienic packaging</div>
-  <div class="pill">Commitment to sustainability and customer well-being</div>
-</div>
-
-  </section>
-   <!-- Why Choose Us Section -->
-<section class="why-choose-us">
-  <h2>Why Choose Us?</h2>
-  <ul>
-    <li>✅ 100% natural, safe, and effective</li>
-    <li>🌿 Rooted in Indian tradition, made for today’s needs</li>
-    <li>🤝 Reliable customer service & transparent business practices</li>
-    <li>🌟 Trusted by individual customers</li>
-  </ul>
-</section>
-
-  <!-- Contact / Order -->
-  <section id="order" class="contact">
-    <h2 class="section-title">Order Instantly on WhatsApp</h2>
-    <p class="section-sub">Have questions or ready to buy? Chat with us—quick replies, easy ordering.</p>
-
-    <div class="contact-card reveal">
-      <div class="text">
-        <h3 style="margin:0 0 6px">We’re one message away</h3>
-        <p style="margin:0; color:var(--muted)">Tell us which product you want and quantity. We’ll confirm stock, pricing, and delivery options.</p>
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="wrap">
+        <h1>Welcome to Ponviyal & Ponmanjal </h1>
+        <h2>Embrace Nature’s Glow</h2>
+        <p>Ponviyal is dedicated to delivering India’s traditional herbal wisdom through innovative herbal powders and
+          skincare essentials. Discover the power of time-tested ingredients like Kasturi Manjal (turmeric), Multani
+          Mitti, and herbal blends—carefully crafted for purity, safety, and results you can trust.</p>
+        <a href="#products" class="cta">Shop Now</a>
+        <h2>Shop now and experience the natural difference for yourself.</h2>
       </div>
-      <div class="cta-row">
-  <a class="btn primary" target="_blank"
-     href="https://wa.me/919698675335?text=Hello%2C%20I%20want%20to%20order%20the%20Herbal%20Powder%20from%20Ponviyal%20Herbal.">
-     Chat on WhatsApp
-  </a>
-</div>
+    </section>
+
+    <!-- Products -->
+    <section id="products">
+      <h2 class="section-title">Our Products</h2>
+      <p class="section-sub">Carefully curated, time-tested formulations for everyday wellness.</p>
+
+      <div class="product-slider-container">
+        <div class="product-slider">
+
+          <!-- Slide 1 -->
+          <div class="product-slide" onclick="location.href='bathpowder.html'">
+            <div class="slide-image">
+              <img src="bath.jpg" alt="Herbal Bath Powder">
+              <button class="shop-btn">Shop Now </button>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="product-slide" onclick="location.href='turmericpowder.html'">
+            <div class="slide-image">
+              <img src="turm2.jpg" alt="Skin Glow Turmeric Powder">
+              <button class="shop-btn">Shop Now </button>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="product-slide" onclick="location.href='kasturipowder.html'">
+            <div class="slide-image">
+              <img src="kasturi fin.jpg" alt="Kasturi Turmeric Powder">
+              <button class="shop-btn">Shop Now </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Dots -->
+        <div class="slider-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Contact / Order -->
+    <section id="order" class="contact">
+      <h2 class="section-title">Order Instantly on WhatsApp</h2>
+      <p class="section-sub">Have questions or ready to buy? Chat with us—quick replies, easy ordering.</p>
+
+      <div class="contact-card reveal">
+        <div class="text">
+          <h3 style="margin:0 0 6px">We’re one message away</h3>
+          <p style="margin:0; color:var(--muted)">Tell us which product you want and quantity. We’ll confirm stock,
+            pricing, and delivery options.</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary" target="_blank"
+            href="https://wa.me/919698675335?text=Hello%2C%20I%20want%20to%20order%20the%20Herbal%20Powder%20from%20Ponviyal%20Herbal.">
+            Chat on WhatsApp
+          </a>
+        </div>
 
         <a class="btn" href="#products">Browse Products</a>
       </div>
-    </div>
+  </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    © 2025 Ponviyal Herbal • All rights reserved
-    <p>Designed by <a href="https://www.instagram.com/digi_trix_/"target="_blank" 
-       style="color:black; text-decoration: none; font-weight: 600;">DigiTrix</a></p>
-  </footer>
+  <!-- added this part -->
+    <!-- added this part -->
+    <footer class="main-footer">
+        <div class="footer-container">
+
+            <!-- Column 1: Logo + Story -->
+            <div class="footer-col footer-about">
+                <img src="logo.png" alt="Ponviyal Logo" class="footer-logo">
+                <p>
+                    At Ponviyal, we believe that true beauty begins with nature’s purity.
+                    Born from the vision of SJM Herbal Products, our purpose is to bring back
+                    the trusted Indian herbal traditions that have cared for skin for generations.
+                    We combine these age-old practices with clean and modern formulations made
+                    for today’s lifestyle. Our Ponmanjal collection features authentic Kasturi Manjal,
+                    known for its natural glow-enhancing benefits. Every ingredient is selected with
+                    care, ensuring purity, safety, and timeless wellness. With every product, we honor
+                    our roots and help you glow confidently and naturally.
+                </p>
+            </div>
+
+            <!-- Column 2: Quick Links (Products) -->
+            <div class="footer-col">
+                <h4>Our Products</h4>
+                <ul>
+                    <li><a href="bathpowder.html">Bath Powder</a></li>
+                    <li><a href="turmeric.html">Turmeric</a></li>
+                    <li><a href="Kasturi.html">Kasturi Turmeric</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Important Info -->
+            <div class="footer-col">
+                <h4>Important Info</h4>
+                <ul>
+                    <li><a href="#about us">About Us</a></li>
+                    <li><a href="return.html">Return Policy</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Need Help -->
+            <div class="footer-col footer-help">
+                <h4>Need Help?</h4>
+                <p>Need help with your order?</p>
+                <p class="help-link"><a href="contact.html">Contact Us</a></p>
+
+                <p class="support-title">Customer Support :</p>
+                <p>(Mon - Sat : 9:00 AM to 7:00 PM)</p>
+
+                <div class="footer-icons">
+                    <a href="https://www.instagram.com/ponviyal/" target="_blank">
+                        <img src="insta.png" class="social-icon">
+                    </a>
+
+                    <a href="https://www.facebook.com/profile.php?id=61583623478814" target="_blank">
+                        <img src="fb.png" class="social-icon">
+                    </a>
+
+                    <a href="mailto:info@ponviyal.com@gmail.com">
+                        <img src="mail.png" class="social-icon">
+                    </a>
+                </div>
+
+
+            </div>
+    </footer>
+    <!-- added this part -->
+
+
+
+    <!-- Your existing footer stays exactly same -->
+    <footer class="footer">
+        © 2025 Ponviyal Herbal • All rights reserved
+        <p>Designed by <a href="https://www.instagram.com/digi_trix_/" target="_blank"
+                style="color:black; text-decoration: none; font-weight: 600;">DigiTrix</a></p>
+    </footer>
+
+
 
   <!-- Floating WhatsApp FAB -->
   <a class="wa-fab" target="_blank"
-     href="https://wa.me/919698675335?text=Hello%2C%20I%20want%20to%20order%20the%20Herbal%20Bath%20Powder%20from%20Ponviyal%20Herbal.">
+    href="https://wa.me/919698675335?text=Hello%2C%20I%20want%20to%20order%20the%20Herbal%20Bath%20Powder%20from%20Ponviyal%20Herbal.">
 
-     <!-- Inline WhatsApp SVG icon (official-style) -->
-     <svg class="wa-icon" viewBox="0 0 32 32" aria-hidden="true">
-       <path fill="#fff" d="M19.11 17.38c-.27-.13-1.6-.79-1.85-.88-.25-.09-.43-.13-.62.13s-.71.88-.86 1.06c-.16.18-.32.2-.59.07-.27-.13-1.12-.41-2.14-1.31-.79-.7-1.32-1.56-1.48-1.82-.16-.27-.02-.42.12-.55.13-.12.27-.32.4-.48.13-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.13-.62-1.49-.85-2.04-.22-.53-.45-.46-.62-.47-.16-.01-.34-.01-.52-.01s-.48.07-.73.34c-.25.27-.96.94-.96 2.3 0 1.36.99 2.68 1.13 2.86.13.18 1.94 2.97 4.71 4.18.66.29 1.18.46 1.58.59.66.21 1.26.18 1.73.11.53-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.29-.07-.12-.25-.18-.52-.31z"/>
-       <path fill="#fff" d="M16 3C9.383 3 4 8.383 4 15c0 2.117.555 4.102 1.529 5.82L4 29l8.35-1.508C14.01 28.47 14.983 28.6 16 28.6c6.617 0 12-5.383 12-12S22.617 3 16 3zm0 22.8c-.91 0-1.79-.15-2.61-.43l-.19-.07-4.88.88.9-4.76-.09-.2A9.79 9.79 0 0 1 6.2 15c0-5.41 4.39-9.8 9.8-9.8s9.8 4.39 9.8 9.8-4.39 9.8-9.8 9.8z"/>
-     </svg>
+    <!-- Inline WhatsApp SVG icon (official-style) -->
+    <svg class="wa-icon" viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="#fff"
+        d="M19.11 17.38c-.27-.13-1.6-.79-1.85-.88-.25-.09-.43-.13-.62.13s-.71.88-.86 1.06c-.16.18-.32.2-.59.07-.27-.13-1.12-.41-2.14-1.31-.79-.7-1.32-1.56-1.48-1.82-.16-.27-.02-.42.12-.55.13-.12.27-.32.4-.48.13-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.13-.62-1.49-.85-2.04-.22-.53-.45-.46-.62-.47-.16-.01-.34-.01-.52-.01s-.48.07-.73.34c-.25.27-.96.94-.96 2.3 0 1.36.99 2.68 1.13 2.86.13.18 1.94 2.97 4.71 4.18.66.29 1.18.46 1.58.59.66.21 1.26.18 1.73.11.53-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.29-.07-.12-.25-.18-.52-.31z" />
+      <path fill="#fff"
+        d="M16 3C9.383 3 4 8.383 4 15c0 2.117.555 4.102 1.529 5.82L4 29l8.35-1.508C14.01 28.47 14.983 28.6 16 28.6c6.617 0 12-5.383 12-12S22.617 3 16 3zm0 22.8c-.91 0-1.79-.15-2.61-.43l-.19-.07-4.88.88.9-4.76-.09-.2A9.79 9.79 0 0 1 6.2 15c0-5.41 4.39-9.8 9.8-9.8s9.8 4.39 9.8 9.8-4.39 9.8-9.8 9.8z" />
+    </svg>
   </a>
 
- <script>
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        let splash = document.getElementById("splash");
-        splash.style.opacity = "0";   // fade out
-        setTimeout(() => {
-          splash.style.display = "none";  // hide completely
-          document.getElementById("main-content").style.display = "block"; // show main site
-        }, 800); // wait for fade-out
-      }, 3000); // 3s splash duration
+ 
+
+  <script>
+    // Smooth reveal on scroll (Intersection Observer)
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: .14 });
+
+    document.querySelectorAll('.reveal, .card').forEach(el => io.observe(el));
+
+    // Minor convenience: close mobile address bar jump on anchor click
+    document.querySelectorAll('nav a').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          e.preventDefault();
+          const y = target.getBoundingClientRect().top + window.pageYOffset - 64;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".product-slide");
+    const dots = document.querySelectorAll(".dot");
+    const slider = document.querySelector(".product-slider");
+
+    function showSlide(index) {
+      currentSlide = index;
+      slider.style.transform = `translateX(-${index * 100}%)`;
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+    }
+
+    // Auto-slide every 3 seconds
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }, 3000);
+
+    // Make dots clickable
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        showSlide(index);
+      });
     });
   </script>
 
 <script>
-  // Smooth reveal on scroll (Intersection Observer)
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
-    });
-  }, {threshold: .14});
-
-  document.querySelectorAll('.reveal, .card').forEach(el=> io.observe(el));
-
-  // Minor convenience: close mobile address bar jump on anchor click
-  document.querySelectorAll('nav a').forEach(a=>{
-    a.addEventListener('click', e=>{
-      const id = a.getAttribute('href').slice(1);
-      const target = document.getElementById(id);
-      if(target){
-        e.preventDefault();
-        const y = target.getBoundingClientRect().top + window.pageYOffset - 64;
-        window.scrollTo({top:y, behavior:'smooth'});
-      }
-    });
-  });
+function toggleMobileMenu() {
+  document.getElementById("mobileNav").classList.toggle("show");
+}
 </script>
+
 <script>
-  function toggleDetails(id) {
-    const details = document.getElementById(id);
-    if (details.style.display === "none") {
-      details.style.display = "block";
-    } else {
-      details.style.display = "none";
-    }
+  function toggleMobileMenu() {
+    document.getElementById("mobileNav").classList.toggle("show");
+  }
+
+  function toggleDropdown() {
+    let box = document.getElementById("descBox");
+    box.style.display = box.style.display === "block" ? "none" : "block";
   }
 </script>
-<script>
-  const hamburger = document.getElementById("hamburger");
-  const mobileMenu = document.getElementById("mobileMenu");
-
-  hamburger.addEventListener("click", () => {
-    mobileMenu.style.display =
-      mobileMenu.style.display === "flex" ? "none" : "flex";
-  });
-</script>
-  <script>
-    function openMenu() {
-      document.getElementById("menu").style.width = "250px";
-    }
-
-    function closeMenu() {
-      document.getElementById("menu").style.width = "0";
-    }
-  </script>
-
-
 </body>
+
 </html>
-
-
-
-
-
